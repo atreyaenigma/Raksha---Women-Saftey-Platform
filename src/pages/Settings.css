@@ -1,0 +1,84 @@
+.settings { padding: 56px 0 90px; min-height: 80vh; }
+.settings__head { max-width: 620px; margin-bottom: 40px; }
+.settings__head h1 { font-size: clamp(1.7rem, 3vw, 2.2rem); color: var(--text); margin: 10px 0 14px; }
+.settings__head p { font-size: 0.95rem; line-height: 1.6; }
+
+.settings__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 32px; }
+
+.settings__card {
+  background: var(--surface); border: 1px solid var(--surface-border);
+  border-radius: 16px; padding: 26px; display: flex; flex-direction: column; gap: 14px;
+}
+
+.settings__card-head { display: flex; gap: 14px; align-items: flex-start; }
+.settings__card-head svg { color: var(--safe); margin-top: 3px; flex-shrink: 0; }
+.settings__card-head h3 { font-size: 0.96rem; color: var(--text); margin-bottom: 5px; }
+.settings__card-head p { font-size: 0.82rem; line-height: 1.5; }
+
+.settings__action { align-self: flex-start; font-size: 0.84rem; padding: 9px 16px; }
+.settings__status { font-size: 0.76rem; color: var(--text-faint); font-family: var(--font-mono); }
+
+.settings__input {
+  background: var(--bg); border: 1px solid var(--surface-border); border-radius: 9px;
+  padding: 10px 13px; color: var(--text); font-size: 0.88rem;
+}
+
+.settings__toggle {
+  width: 46px; height: 26px; border-radius: 999px;
+  background: var(--surface-2); border: 1px solid var(--surface-border);
+  position: relative; align-self: flex-start; transition: background 0.2s ease;
+}
+.settings__toggle.is-on { background: var(--safe-dim); border-color: var(--safe); }
+.settings__toggle:disabled { opacity: 0.4; cursor: not-allowed; }
+.settings__toggle-knob {
+  position: absolute; top: 2px; left: 2px;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--text-faint); transition: transform 0.2s ease, background 0.2s ease;
+}
+.settings__toggle.is-on .settings__toggle-knob { transform: translateX(20px); background: var(--safe); }
+
+.settings__note {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 0.82rem; color: var(--text-muted);
+  background: var(--surface); border: 1px solid var(--surface-border);
+  border-radius: 12px; padding: 16px 18px;
+}
+.settings__note svg { color: var(--accent); flex-shrink: 0; margin-top: 1px; }
+
+@media (max-width: 760px) { .settings__grid { grid-template-columns: 1fr; } }
+
+.settings__backend {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono); font-size: 0.78rem;
+  color: var(--text-faint); background: var(--surface);
+  border: 1px solid var(--surface-border);
+  padding: 8px 14px; border-radius: 999px; margin-top: 16px;
+}
+.settings__backend.is-online { color: var(--safe); border-color: #00e0b840; }
+.settings__backend-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--text-faint); }
+.settings__backend.is-online .settings__backend-dot { background: var(--safe); animation: dotPulse 1.6s ease-out infinite; }
+
+.settings__row { display: flex; gap: 10px; flex-wrap: wrap; }
+.settings__label { display: flex; flex-direction: column; gap: 7px; font-size: 0.82rem; color: var(--text-muted); }
+
+.settings__twilio-card {
+  margin-top: 32px; background: var(--surface); border: 1px solid var(--surface-border);
+  border-radius: 16px; padding: 28px;
+}
+.settings__twilio-card h3 { font-size: 1rem; color: var(--text); margin-bottom: 10px; }
+.settings__twilio-card p { font-size: 0.86rem; margin-bottom: 14px; }
+.settings__twilio-card code { font-family: var(--font-mono); font-size: 0.82rem; color: var(--safe); }
+
+.settings__code-block {
+  display: flex; flex-direction: column; gap: 6px;
+  background: var(--bg); border: 1px solid var(--surface-border);
+  border-radius: 10px; padding: 14px 16px; margin-bottom: 14px;
+}
+.settings__code-block code { font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted); }
+
+.settings__sms-status {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 0.8rem; color: var(--text-faint);
+}
+.settings__sms-status.is-live { color: var(--safe); }
+.settings__sms-status code { font-size: 0.78rem; color: var(--text-muted); }

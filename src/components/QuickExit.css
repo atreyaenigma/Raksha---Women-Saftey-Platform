@@ -1,0 +1,23 @@
+.quick-exit {
+  position: fixed;
+  bottom: 18px;
+  left: 18px;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.74rem;
+  font-family: var(--font-mono);
+  color: var(--text-faint);
+  background: #0a0e17cc;
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--surface-border);
+  padding: 8px 12px;
+  border-radius: 999px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.quick-exit:hover { color: var(--text); border-color: #ffffff33; }
+
+@media (max-width: 640px) {
+  .quick-exit { bottom: 14px; left: 14px; padding: 7px 10px; font-size: 0.7rem; }
+}
