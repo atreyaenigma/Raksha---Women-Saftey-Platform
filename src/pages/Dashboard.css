@@ -84,3 +84,27 @@
   .dash__stats { grid-template-columns: 1fr; }
   .dash__table { overflow-x: auto; display: block; }
 }
+
+.dash__panel-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.dash__panel-title-row h3 { margin: 0; }
+.dash__locate-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  background: transparent;
+  border: 1px solid var(--surface-border);
+  border-radius: 999px;
+  padding: 7px 12px;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.dash__locate-btn:hover { color: var(--safe); border-color: var(--safe); }
+.dash__locate-btn:disabled { cursor: wait; opacity: 0.72; }

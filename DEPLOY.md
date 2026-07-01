@@ -118,7 +118,7 @@ Edit `src/api.js` — change the BASE url for production:
 const BASE = import.meta.env.VITE_API_URL || '/api';
 ```
 
-Then create `server/.env` (frontend build env):
+Then create a `.env` file in the **project root** (not `server/`) — this is read by Vite at build time:
 ```
 VITE_API_URL=https://your-backend-url.railway.app/api
 ```

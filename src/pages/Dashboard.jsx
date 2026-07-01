@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
-import { ShieldCheck, Users, History, MapPin, Siren, ArrowRight, Footprints } from 'lucide-react';
+import { ShieldCheck, Users, History, MapPin, Siren, ArrowRight, Footprints, LocateFixed } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import LiveMap from '../components/LiveMap';
 import './Dashboard.css';
 
 export default function Dashboard() {
-  const { contacts, history, sosActive, location, checkIn } = useApp();
+  const { contacts, history, sosActive, location, checkIn, geoStatus, requestLiveLocation } = useApp();
 
   const stats = [
     { icon: Siren, label: 'Active alerts', value: sosActive ? '1' : '0', tone: sosActive ? 'accent' : 'safe' },
@@ -41,7 +41,22 @@ export default function Dashboard() {
 
         <div className="dash__grid">
           <div className="dash__panel dash__panel--wide">
-            <h3><MapPin size={16} /> Current location</h3>
+            <div className="dash__panel-title-row">
+              <h3><MapPin size={16} /> Current location</h3>
+              <button
+                type="button"
+                className="dash__locate-btn"
+                onClick={requestLiveLocation}
+                disabled={geoStatus === 'locating'}
+              >
+                <LocateFixed size={13} />
+                {geoStatus === 'live' || geoStatus === 'watching'
+                  ? 'Refresh location'
+                  : geoStatus === 'locating'
+                    ? 'Locating…'
+                    : 'Use current location'}
+              </button>
+            </div>
             <LiveMap
               lat={location.lat}
               lng={location.lng}

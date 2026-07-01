@@ -5,7 +5,6 @@ const {
   TWILIO_SID,
   TWILIO_AUTH_TOKEN,
   TWILIO_FROM_NUMBER,
-  APP_URL = 'https://your-app.com',
 } = process.env;
 
 const client = (TWILIO_SID && TWILIO_AUTH_TOKEN)

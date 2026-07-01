@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Mic, Smartphone, Video, MapPin, ShieldAlert, Navigation, CheckCircle2 } from 'lucide-react';
+import { Mic, Smartphone, Video, MapPin, ShieldAlert, CheckCircle2 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import './Settings.css';
 
