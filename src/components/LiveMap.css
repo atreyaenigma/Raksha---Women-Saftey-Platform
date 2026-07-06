@@ -1,0 +1,95 @@
+.live-map {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--surface-border);
+}
+
+.live-map__container {
+  width: 100%;
+  height: 100%;
+  background: #0d1220;
+  filter: saturate(0.85) brightness(0.92);
+}
+
+.live-map__badge {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  z-index: 500;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text);
+  background: rgba(10, 14, 23, 0.85);
+  backdrop-filter: blur(4px);
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--surface-border);
+  max-width: calc(100% - 16px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.leaflet-control-attribution {
+  background: rgba(10, 14, 23, 0.7) !important;
+  color: var(--text-faint) !important;
+  font-size: 0.62rem !important;
+}
+.leaflet-control-attribution a { color: var(--text-muted) !important; }
+
+.live-map__poi-icon span {
+  display: block;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--accent, #ff3b5c);
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 2px rgba(255, 59, 92, 0.35);
+}
+
+.live-map__dest-icon span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.5));
+}
+
+.live-map--pickable .live-map__container { cursor: crosshair; }
+
+.live-map__pick-hint {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 500;
+  font-size: 0.72rem;
+  color: var(--text);
+  background: rgba(10, 14, 23, 0.85);
+  backdrop-filter: blur(4px);
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--surface-border);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.live-map--empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--surface-2);
+  color: var(--text-faint);
+  text-align: center;
+  padding: 20px;
+}
+.live-map--empty p { font-size: 0.84rem; max-width: 240px; }
+.live-map--empty button {
+  font-size: 0.78rem; color: var(--safe); background: var(--safe-dim);
+  border: 1px solid #00e0b840; padding: 7px 16px; border-radius: 999px;
+}
+.live-map__spin { animation: liveMapSpin 0.9s linear infinite; color: var(--safe); }
+@keyframes liveMapSpin { to { transform: rotate(360deg); } }

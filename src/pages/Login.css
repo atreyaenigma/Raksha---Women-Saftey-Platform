@@ -1,0 +1,253 @@
+.login {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 15% 20%, #ff3b5c14, transparent 45%),
+    radial-gradient(circle at 85% 80%, #00e0b814, transparent 45%),
+    var(--bg);
+}
+
+/* ── Ambient animated rings, decorative only ─────────────────────────────── */
+.login__ambient {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.login__ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid #ff3b5c22;
+  animation: loginRingPulse 5s ease-out infinite;
+}
+.login__ring--1 { width: 420px; height: 420px; }
+.login__ring--2 { width: 620px; height: 620px; animation-delay: 1s; border-color: #00e0b81c; }
+.login__ring--3 { width: 860px; height: 860px; animation-delay: 2s; }
+
+@keyframes loginRingPulse {
+  0%   { transform: scale(0.85); opacity: 0; }
+  15%  { opacity: 1; }
+  100% { transform: scale(1.05); opacity: 0; }
+}
+
+/* ── Layout ───────────────────────────────────────────────────────────────── */
+.login__layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 64px;
+  align-items: center;
+  max-width: 980px;
+  width: 100%;
+}
+
+.login__brand {
+  animation: loginSlideIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.login__brand-mark {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-display); font-weight: 700; font-size: 1.15rem;
+  color: var(--text); margin-bottom: 28px;
+}
+.login__brand-accent { color: var(--accent); }
+.login__brand h2 {
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  line-height: 1.25;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.login__brand-sub { font-size: 0.95rem; max-width: 400px; }
+
+/* ── Card ─────────────────────────────────────────────────────────────────── */
+.login__card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: 20px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  animation: loginCardRise 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.1s;
+}
+.login__card.is-shaking { animation: loginShake 0.45s ease; }
+
+@keyframes loginSlideIn {
+  from { opacity: 0; transform: translateX(-16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes loginCardRise {
+  from { opacity: 0; transform: translateY(18px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes loginShake {
+  10%, 90% { transform: translateX(-3px); }
+  20%, 80% { transform: translateX(5px); }
+  30%, 50%, 70% { transform: translateX(-8px); }
+  40%, 60% { transform: translateX(8px); }
+}
+
+/* ── Role tabs ────────────────────────────────────────────────────────────── */
+.login__tabs {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--surface-2);
+  border: 1px solid var(--surface-border);
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 18px;
+}
+.login__tabs-pill {
+  position: absolute;
+  top: 4px; bottom: 4px; left: 4px;
+  width: calc(50% - 4px);
+  background: var(--accent);
+  border-radius: 9px;
+  transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+  z-index: 0;
+}
+.login__tab {
+  position: relative;
+  z-index: 1;
+  display: flex; align-items: center; justify-content: center; gap: 7px;
+  padding: 10px 0;
+  font-size: 0.86rem; font-weight: 600;
+  color: var(--text-muted);
+  border-radius: 9px;
+  transition: color 0.25s ease;
+}
+.login__tab.is-active { color: #fff; }
+
+.login__role-blurb {
+  font-size: 0.82rem;
+  color: var(--text-faint);
+  margin-bottom: 22px;
+  min-height: 32px;
+  animation: loginFadeIn 0.3s ease both;
+}
+@keyframes loginFadeIn {
+  from { opacity: 0; transform: translateY(-3px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Fields ───────────────────────────────────────────────────────────────── */
+.login__field {
+  display: flex; flex-direction: column; gap: 7px;
+  font-size: 0.82rem; color: var(--text-muted);
+  margin-bottom: 16px;
+}
+.login__input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.login__input-icon {
+  position: absolute; left: 13px;
+  color: var(--text-faint);
+  pointer-events: none;
+  transition: color 0.2s ease;
+}
+.login__input-wrap input {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--surface-border);
+  border-radius: 9px;
+  padding: 11px 13px 11px 38px;
+  color: var(--text);
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.login__input-wrap input::placeholder { color: var(--text-faint); }
+.login__input-wrap input:focus {
+  outline: none;
+  border-color: var(--safe);
+  box-shadow: 0 0 0 3px var(--safe-dim);
+}
+.login__input-wrap input:focus ~ .login__input-icon,
+.login__input-wrap:focus-within .login__input-icon { color: var(--safe); }
+
+.login__toggle-visibility {
+  position: absolute; right: 10px;
+  display: flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px;
+  border-radius: 7px;
+  color: var(--text-faint);
+  transition: color 0.2s ease, background 0.2s ease;
+}
+.login__toggle-visibility:hover { color: var(--text); background: var(--surface-2); }
+
+.login__error {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin: -6px 0 14px;
+  animation: loginFadeIn 0.25s ease both;
+}
+
+/* ── Submit button ────────────────────────────────────────────────────────── */
+.login__submit {
+  width: 100%;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+.login__spin { animation: loginSpin 0.8s linear infinite; }
+@keyframes loginSpin { to { transform: rotate(360deg); } }
+
+.login__demo-hint {
+  font-size: 0.74rem;
+  color: var(--text-faint);
+  text-align: center;
+  margin-top: 16px;
+  line-height: 1.5;
+}
+.login__demo-hint strong { color: var(--text-muted); }
+.login__prefill {
+  color: var(--safe);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.login__prefill:hover { color: var(--text); }
+
+/* ── Already-signed-in state ──────────────────────────────────────────────── */
+.login__card--session {
+  align-items: center;
+  text-align: center;
+  max-width: 380px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.login__session-icon {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--accent-dim);
+  color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+}
+.login__card--session h1 { font-size: 1.4rem; color: var(--text); margin-bottom: 8px; }
+.login__card--session p { font-size: 0.9rem; margin-bottom: 24px; }
+.login__card--session p strong { color: var(--text); }
+.login__session-actions { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+.login__session-actions .btn { justify-content: center; width: 100%; }
+
+@media (max-width: 860px) {
+  .login__layout { grid-template-columns: 1fr; gap: 32px; text-align: center; }
+  .login__brand { display: flex; flex-direction: column; align-items: center; }
+  .login__brand-sub { max-width: none; }
+}
+
+@media (max-width: 480px) {
+  .login__card { padding: 24px; }
+}

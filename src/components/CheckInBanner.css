@@ -1,0 +1,13 @@
+.check-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: var(--safe);
+  background: var(--safe-dim);
+  border-bottom: 1px solid #00e0b840;
+  padding: 9px 16px;
+  text-align: center;
+}
